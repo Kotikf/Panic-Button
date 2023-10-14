@@ -13,7 +13,7 @@ flag = 0
 def power_off():
     with open('ATTENTION!!!', 'a', encoding='utf-8') as file:
         file.write(f'попытка входы в систему {date.today()} в {datetime.now().strftime("%H:%M:%S")}\n')
-    return os.system('shutdown /s /t 0') # 1 or 0
+    return os.system('shutdown /s /t 0') 
 
     return print('power_off')
     
@@ -25,8 +25,7 @@ def count_time(delay: int = 15):
         time.sleep(5)
         if t > 5:
             power_off()
-            print('power_off')
-            break
+
 
 
 def wait_click():
