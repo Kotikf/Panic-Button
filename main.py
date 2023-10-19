@@ -16,11 +16,6 @@ def power_off():
     return os.system('shutdown /s /t 0')
 
 
-    
-
-import datetime
-import keyboard
-
 def check_state(delay: int, cur_time=datetime.datetime.now()) -> None:
     new_time = cur_time + datetime.timedelta(seconds=delay)
 
