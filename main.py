@@ -3,11 +3,10 @@ import time
 import subprocess
 
 class PanicButton:
-    def check_active(self, name, timer=5):
-        while timer:
+    def check_active(self, name, timer=30):
+        for i in range(timer):
             if name in subprocess.check_output('tasklist', shell=True).decode('latin-1'):
                 break
-            timer -=1
             time.sleep(1)
         else: 
             return self.power_off(self)
