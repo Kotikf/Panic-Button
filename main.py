@@ -12,17 +12,14 @@ class PanicButton:
             return self.power_off(self)
 
 
-    def remove_file(self, path):
-        with open(path, 'r') as  file:
-            text = file.read()
-        len_text = len(text)
-        zero_fill_line_length = 50
-        zero_fill = ['0' * zero_fill_line_length
-                      for _
-                      in range(len_text // zero_fill_line_length + 1)]
-        zero_fill = os.linesep.join(zero_fill)
-        with open(path, 'w') as file:
-            file.write(zero_fill)
+    def remove_file(self, file_path):
+        size = os.path.getsize(file_path)
+
+        with open(file_path, 'wb') as  file:
+            file.seek(0)
+            file.write(b'\x00' * size)
+
+        os.remove(file_path)
 
 
     def power_off(self):
