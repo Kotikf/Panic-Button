@@ -15,9 +15,11 @@ class PanicButton:
     def remove_file(self, file_path):
         size = os.path.getsize(file_path)
 
-        with open(file_path, 'wb') as  file:
+        with open(file_path, 'rb+') as  file:
             file.seek(0)
-            file.write(b'\x00' * size)
+            
+            for _ in range(size):
+                file.write(b'\x00')
 
         os.remove(file_path)
 
